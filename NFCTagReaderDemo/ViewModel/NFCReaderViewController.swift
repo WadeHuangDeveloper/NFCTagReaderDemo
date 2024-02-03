@@ -71,7 +71,7 @@ extension NFCReaderViewController: NFCTagReaderSessionDelegate {
                 return
             }
             
-            // Connect succeeded, then query status
+            // Connect succeeded, then convert to NFCNDEFTag
             var ndefTag: NFCNDEFTag
             var identifier: Data
             switch tag {
@@ -92,6 +92,7 @@ extension NFCReaderViewController: NFCTagReaderSessionDelegate {
                 return
             }
             
+            // Query status
             ndefTag.queryNDEFStatus { status, capacity, error in
                 if let error = error {
                     self.session?.invalidate(errorMessage: error.localizedDescription)

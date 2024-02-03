@@ -137,7 +137,7 @@ extension NFCWriterViewController: NFCTagReaderSessionDelegate {
                 return
             }
             
-            // Connect succeeded, then query status
+            // Connect succeeded, then convert to NFCNDEFTag
             var ndefTag: NFCNDEFTag
             switch tag {
             case let .miFare(nfcMiFareTag): ndefTag = nfcMiFareTag
@@ -149,6 +149,7 @@ extension NFCWriterViewController: NFCTagReaderSessionDelegate {
                 return
             }
             
+            // Query status
             ndefTag.queryNDEFStatus { status, capacity, error in
                 if let error = error {
                     self.session?.invalidate(errorMessage: error.localizedDescription)
