@@ -8,7 +8,6 @@
 import UIKit
 import CoreNFC
 import os
-import CryptoSwift
 
 class NFCWriterViewController: UIViewController {
 
